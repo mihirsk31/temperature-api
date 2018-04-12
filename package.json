@@ -1,0 +1,23 @@
+{
+  "name": "temperature-api",
+  "version": "0.0.1",
+  "dependencies": {
+    "yql": "^1.0.0"
+  },
+  "description": "Virgina CyberRange - Temperature API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mihirsk31/temperature-api.git"
+  },
+  "author": "Mihir Kulkarni",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mihirsk31/temperature-api/issues"
+  },
+  "homepage": "https://github.com/mihirsk31/temperature-api#readme"
+}
