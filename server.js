@@ -11,7 +11,7 @@ function temperatureServer(request, res){
   var path_array = path.split("/");
   var query = url_parts.query;
 
-  if(path_array.length < 3 || path_array[1]!="locations"){
+  if(path_array.length < 3 || path_array[1]!="locations" || (path_array.length == 3 && path_array[2]==="")){
     res.statusCode = 404;
     res.setHeader('Content-Type', 'text/html');
 
@@ -35,9 +35,18 @@ function temperatureServer(request, res){
     var zip = path_array[2];
 
     yql_query = `select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='${zip}') AND u='${units}'`
+
+    // console.log(yql_query)
   
     new YQL(yql_query).exec(function(error, data) {
-      var condition = data.query.results.channel.item.condition;
+      var results = data.query.results;
+      if(!results){
+        res.setHeader('Content-Type', 'text/html');
+        res.end("ERROR: Invalid location");
+        return;
+      }
+
+      var condition = results.channel.item.condition;
   
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json');

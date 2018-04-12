@@ -1,6 +1,6 @@
 {
   "name": "temperature-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "yql": "^1.0.0"
   },
